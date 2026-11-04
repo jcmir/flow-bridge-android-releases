@@ -4,7 +4,7 @@
 
 A proprietary third-party Android application for using Google Flow through an embedded GeckoView browser. This repository distributes application binaries and documentation. Application source code is not distributed here.
 
-**Release preparation: no public GitHub Release has been created.** The selected [distribution repository](https://github.com/jcmir/flow-bridge-android-releases) is being prepared privately.
+**Private release preparation: Draft v0.3.0 exists; public release has not been approved.** The selected [distribution repository](https://github.com/jcmir/flow-bridge-android-releases) is being prepared privately.
 
 Features include browsing Google Flow, switching local profiles, selecting files with the Android system picker, and saving supported photos and videos. Successful processing and supported formats also depend on the website.
 
@@ -23,3 +23,5 @@ Open the verified APK, temporarily allow installation from your chosen source, a
 Support: [project Telegram channel](https://t.me/ITHRONIC); public issue links will be added after the new repository is created. Do not submit cookies, credentials, private account content, personal media, or sensitive logs. See [support](SUPPORT.md), [security](SECURITY.md), [privacy status: BLOCKED](PRIVACY.md), [license](LICENSE.md), and [third-party notices](THIRD_PARTY_NOTICES.md).
 
 Flow Bridge is not an official Google product and does not claim affiliation or endorsement. Google determines service availability, account eligibility, and regional restrictions. This application does not guarantee bypassing restrictions or continued third-party service access. Camera capture and directory upload were not added in build 9; an interrupted file selection may need to be repeated.
+
+See [third-party source availability](SOURCE_AVAILABILITY.md). Planned release page after approval: [v0.3.0](https://github.com/jcmir/flow-bridge-android-releases/releases/tag/v0.3.0); this is not a currently available public download.

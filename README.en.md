@@ -1,5 +1,7 @@
 # Flow Bridge Android
 
+Brand: **Flow Bridge**. GitHub developer: [jcmir](https://github.com/jcmir).
+
 [Русский](README.md)
 
 A proprietary third-party Android application for using Google Flow through an embedded GeckoView browser. This repository distributes application binaries and documentation. Application source code is not distributed here.

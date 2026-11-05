@@ -1,5 +1,7 @@
 # Flow Bridge Android 0.3.1
 
+Flow Bridge · разработчик на GitHub [jcmir](https://github.com/jcmir) · versionCode 10.
+
 Flow Bridge открывает Google Flow на Android и позволяет работать с отдельными профилями, выбирать фото и видео для загрузки и сохранять поддерживаемые скачивания в галерею.
 
 ## Что изменилось

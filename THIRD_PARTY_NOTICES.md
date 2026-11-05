@@ -26,7 +26,17 @@ GeckoView — Mozilla и другие участники. Локальная з�
 
 AAR `org.mozilla.geckoview:geckoview-arm64-v8a:157.0.20261005135250` совпал с контрольной суммой Mozilla Maven. Все 13 native-библиотек AAR и `assets/omni.ja` совпадают с финальным APK побайтно. В этих файлах локальных изменений не выявлено. Сопоставление преобразованного Java-кода в DEX и состава всех транзитивных библиотек отдельно не завершено.
 
-Среди совпавших файлов есть `liblgpllibs.so` и Mozilla-библиотеки мультимедиа. Сводный license.html перечисляет SoundTouch, Libav, FFmpeg и Graphite2. Нужна привязка конкретных включённых LGPL-компонентов к сборке и проверка применимых условий предоставления исходников и замены или перелинковки. Права пользователей по этим лицензиям сохраняются.
+### LGPL в точном arm64 APK
+
+| Компонент | Доказательство и исходники |
+|---|---|
+| SoundTouch | libxul.so объявляет DT_NEEDED liblgpllibs.so и импортирует RLBoxSoundTouch. liblgpllibs.so экспортирует соответствующие символы. В Mozilla vendoring указан SoundTouch f738b1132ec1fd56efc90367898244cf52d9e6a5, LGPL-2.1. [Метаданные и исходный путь media/libsoundtouch](https://hg.mozilla.org/releases/mozilla-release/raw-file/737ec77d798755890b062aab541a90d6c75afd19/media/libsoundtouch/moz.yaml). |
+| FFmpeg (Mozilla FFVPX) | В libmozavcodec.so экспортируются avcodec_version, avcodec_configuration и avcodec_license, а бинарник содержит N-118248-g252fc2e047 и LGPL 2.1 or later. ELF ссылается на libmozavutil.so. Соответствующий код находится в media/ffvpx официального дерева Mozilla. [Текст LGPL в точной ревизии](https://hg.mozilla.org/releases/mozilla-release/raw-file/737ec77d798755890b062aab541a90d6c75afd19/media/ffvpx/COPYING.LGPLv2.1). |
+| Graphite2 и Libav | Сводный Gecko notice упоминает эти проекты. В точном дереве Mozilla Graphite2 1.3.15 отмечен LGPL-2.1. В проверенных экспортируемых символах APK присутствие Graphite2 отдельно не установлено. Сводное уведомление не доказывает, что отдельная копия Libav вошла в данный APK. [Graphite2 vendoring](https://hg.mozilla.org/releases/mozilla-release/raw-file/737ec77d798755890b062aab541a90d6c75afd19/gfx/graphite2/moz.yaml). |
+
+Официальный архив Mozilla и точные ссылки на исходники перечислены в [SOURCE_AVAILABILITY.md](SOURCE_AVAILABILITY.md). Для подтверждённых LGPL-библиотек необходимо сохранить текст лицензии и уведомления, предоставить соответствующий исходный код с используемыми изменениями и проверить применимое условие §6 LGPL 2.1 для связанного произведения. Наличие отдельных .so доказывает форму связывания, но не подтверждает возможность установки и работы с заменённой библиотекой на Android. Нужен испытанный способ замены совместимой библиотеки либо пригодный комплект для перелинковки с необходимыми объектными материалами и инструкцией. Использование оригинального APK не требует передачи официального закрытого ключа подписи. Пока рабочий способ не проверен, LGPL_COMPLIANCE остаётся HOLD. [LGPL 2.1](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html) · [Разъяснение FSF](https://www.gnu.org/licenses/gpl-faq.en.html#LGPLStaticVsDynamic).
+
+APK также содержит маркеры Google Play services base 18.7.2, basement 18.9.0, fido 21.3.1 и tasks 18.3.2. Условия распространения и notices для точных артефактов проверяются отдельно от Apache-лицензий AndroidX и kotlinx.coroutines. Декларации POM не заменяют сверку с содержимым DEX.
 
 ## Условия снятия HOLD
 

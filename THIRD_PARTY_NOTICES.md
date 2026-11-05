@@ -10,15 +10,15 @@ GeckoView — Mozilla и другие участники. Локальная з�
 
 Полный поставляемый в APK текст уведомлений сохранён без редактирования: [Gecko license.html](third-party/gecko/chrome/toolkit/content/global/license.html). Он включает MPL и уведомления встроенных компонентов. Дополнительно сохранены поставляемые лицензии PDF.js CMaps и шрифтов в `third-party/gecko/chrome/pdfjs/content/web/`.
 
-В `buildconfig.html` внутри `assets/omni.ja` APK указана ревизия Mozilla: `737ec77d798755890b062aab541a90d6c75afd19`, ссылка [исходное дерево Mozilla](https://hg.mozilla.org/releases/mozilla-release/rev/737ec77d798755890b062aab541a90d6c75afd19). Доступность этой ревизии по сети и полнота соответствия распространяемому движку не подтверждены; ссылка сама по себе не закрывает обязательства предоставления исходников.
+В `buildconfig.html` внутри `assets/omni.ja` APK указана ревизия Mozilla: `737ec77d798755890b062aab541a90d6c75afd19`, ссылка [исходное дерево Mozilla](https://hg.mozilla.org/releases/mozilla-release/rev/737ec77d798755890b062aab541a90d6c75afd19). Ревизия соответствует тегу Firefox 157.0.1. Доступен [официальный архив исходников](https://archive.mozilla.org/pub/firefox/releases/157.0.1/source/firefox-157.0.1.source.tar.xz), проверка описана в [SOURCE_AVAILABILITY.md](SOURCE_AVAILABILITY.md).
 
-[MPL 2.0, разделы 3.2–3.4](https://www.mozilla.org/en-US/MPL/2.0/) требует предоставить получателям доступ к соответствующему исходному коду покрываемых MPL компонентов и сохранить уведомления. Для larger work возможно отдельное лицензирование собственных материалов, при соблюдении MPL для покрываемой части. Необходимо подтвердить точный источник движка, наличие изменений, доступный способ получения соответствующих исходников и полноту bundled notices. Это не разрешение публиковать собственный закрытый код Flow Bridge.
+[MPL 2.0, разделы 3.2–3.4](https://www.mozilla.org/en-US/MPL/2.0/) требует предоставить получателям доступ к соответствующему исходному коду покрываемых MPL компонентов и сохранить уведомления. Для larger work возможно отдельное лицензирование собственных материалов, при соблюдении MPL для покрываемой части. Точный источник native Gecko и путь получения исходников подтверждены. Полнота bundled notices и условия отдельных компонентов проверяются отдельно. Это не разрешение публиковать собственный закрытый код Flow Bridge.
 
 ## AndroidX, Kotlin и kotlinx.coroutines
 
 Версионные маркеры, прочитанные непосредственно из APK: [inventory](third-party/apk-component-versions.json). Они подтверждают присутствие соответствующих маркеров, но не являются полным SBOM. Маркер arch.core содержит строку Gradle вместо номера версии; он требует отдельного разрешения по dependency graph.
 
-Сохранены без изменения три текста Apache 2.0 из `META-INF/androidx/annotation/annotation/`, `META-INF/androidx/collection/collection/` и `META-INF/androidx/lifecycle/lifecycle-common/` в [third-party/apk](third-party/apk/). Текст [лицензии kotlinx.coroutines 1.9.0](https://github.com/Kotlin/kotlinx.coroutines/blob/1.9.0/LICENSE.txt) проверен в upstream: Apache 2.0 с уведомлением JetBrains. Полный состав Kotlin runtime и notices ещё требует проверки по разрешённым зависимостям финальной сборки.
+Сохранены без изменения три текста Apache 2.0 из `META-INF/androidx/annotation/annotation/`, `META-INF/androidx/collection/collection/` и `META-INF/androidx/lifecycle/lifecycle-common/` в [third-party/apk](third-party/apk/). Текст [лицензии kotlinx.coroutines 1.9.0](third-party/kotlinx-coroutines-1.9.0-LICENSE.txt) проверен в upstream: Apache 2.0 с уведомлением JetBrains. Полный состав Kotlin runtime и notices ещё требует проверки по разрешённым зависимостям финальной сборки.
 
 [Apache 2.0, раздел 4](https://www.apache.org/licenses/LICENSE-2.0.txt) предусматривает предоставление лицензии, сохранение применимых уведомлений, обозначение изменений и перенос применимых NOTICE, если они поставляются. Одного упоминания Apache 2.0 недостаточно для подтверждения выполнения всех условий каждого артефакта.
 
@@ -32,7 +32,7 @@ AAR `org.mozilla.geckoview:geckoview-arm64-v8a:157.0.20261005135250` совпа�
 
 - Сопоставить runtime dependency graph и точные POM/AAR/JAR с финальным APK, включая транзитивные библиотеки и native-компоненты.
 - Сохранить все применимые copyright, LICENSE и NOTICE для точных версий; проверить, что уже извлечённые notices покрывают весь движок.
-- Проверить публичное получение соответствующих исходников MPL и любых иных компонентов с обязанностями предоставления исходников, включая локальные изменения, если они есть.
+- Сверить преобразованный Java-код и определить объём исходников и материалов для применимых условий LGPL, включая замену или перелинковку там, где это требуется.
 - Подтвердить разрешения на прочие включённые ресурсы и товарные обозначения.
 
 До выполнения этих проверок `THIRD_PARTY_NOTICES=HOLD`. Проприетарный статус приложения не отменяет обязательств по сторонним компонентам.

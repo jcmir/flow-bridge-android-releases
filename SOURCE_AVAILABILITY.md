@@ -1,10 +1,10 @@
 # Исходные материалы сторонних компонентов
 
-Статус: **HOLD** — доступность соответствующего комплекта получателям ещё не подтверждена. Это относится к сторонним компонентам; собственные исходники Flow Bridge не включаются в distribution-репозиторий.
+Точное дерево Mozilla идентифицировано, официальный архив доступен. Остальные условия распространения перечислены ниже.
 
 ## GeckoView / Mozilla
 
-Зависимость сборки 0.3.1 build 10: `org.mozilla.geckoview:geckoview-arm64-v8a:157.0.20261005135250`. В buildconfig.html движка внутри проверенного APK записана Mozilla-ревизия `737ec77d798755890b062aab541a90d6c75afd19` и адрес `https://hg.mozilla.org/releases/mozilla-release/rev/737ec77d798755890b062aab541a90d6c75afd19`. Полнота соответствия и доступность загрузки не подтверждены: это ориентир для проверки, не выполненное предложение исходников.
+Зависимость сборки 0.3.1 build 10: `org.mozilla.geckoview:geckoview-arm64-v8a:157.0.20261005135250`. В buildconfig.html движка внутри проверенного APK записана Mozilla-ревизия `737ec77d798755890b062aab541a90d6c75afd19` и адрес `https://hg.mozilla.org/releases/mozilla-release/rev/737ec77d798755890b062aab541a90d6c75afd19`. Ревизия также указана в POM Mozilla Maven.
 
 Получателям необходимо предоставить разумный и своевременный доступ к Source Code Form покрываемых MPL файлов **именно распространяемой версии**, включая изменения и новые файлы с MPL-кодом, если они есть. Сохранить MPL и применимые notices. Способ доступа должен быть указан рядом с бинарным выпуском и реально работать. Актуальная ветка Firefox или произвольная версия GeckoView не заменяет соответствующий источник.
 
@@ -16,7 +16,7 @@
 
 ### Проверка доступности
 
-Анонимное чтение [файла GeckoView из точной ревизии](https://hg.mozilla.org/releases/mozilla-release/raw-file/737ec77d798755890b062aab541a90d6c75afd19/mobile/android/geckoview/build.gradle) вернуло исходный Gradle-файл. Запрос архива той же ревизии завершился HTTP 403 после перенаправления. Получение полного соответствующего дерева получателем не подтверждено. Для выпуска нужен проверенный публичный путь к точному дереву либо собственное доступное зеркало соответствующего комплекта с notices. Точка выдачи должна быть указана рядом с APK.
+Скачайте [официальный архив исходников Firefox 157.0.1](https://archive.mozilla.org/pub/firefox/releases/157.0.1/source/firefox-157.0.1.source.tar.xz). [Метаданные Mozilla](https://hg.mozilla.org/releases/mozilla-release/json-rev/737ec77d798755890b062aab541a90d6c75afd19) связывают эту ревизию с тегами FIREFOX_157_0_1_RELEASE и FIREFOX-ANDROID_157_0_1_RELEASE. Архив доступен без авторизации (HTTP 200 для HEAD, HTTP 206 и сигнатура XZ при чтении начального диапазона). Дерево включает mobile/android/geckoview и native Gecko. Полный архив в этой проверке не скачивался.
 
 ## Другие компоненты
 
@@ -24,4 +24,11 @@
 
 Сводный Gecko license.html включает разные лицензии; отдельно извлечены тексты PDF.js CMaps и шрифтов. Их нужно сопоставить с runtime dependency graph и native-составом. При наличии компонентов с дополнительными обязанностями предоставления исходников или перелинковки нужны материалы по их конкретным лицензиям. Одно наличие текста LGPL/GPL в сводном HTML не доказывает включение конкретного компонента и способ его связывания.
 
-Сохранённые уведомления перечислены в [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Полный runtime SBOM, проверенный соответствующий source bundle Mozilla и подтверждение всех условий отсутствуют, поэтому LICENSE_NOTICES=HOLD. Проприетарный LICENSE.md этого не заменяет.
+Сохранённые уведомления перечислены в [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Проверка полного runtime состава и применимых условий LGPL остаётся открытой. Проприетарный LICENSE.md этого не заменяет.
+
+### Проверенные источники kotlinx.coroutines 1.9.0
+
+- [Android](https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-coroutines-android/1.9.0/kotlinx-coroutines-android-1.9.0-sources.jar)
+- [Core JVM](https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.9.0/kotlinx-coroutines-core-jvm-1.9.0-sources.jar)
+
+Обе ссылки проверены анонимным HEAD. Маркеры AndroidX и сохранённые уведомления перечислены в [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Для артефактов с отдельными условиями распространяемость и комплект notices проверяются по фактически поставленной версии.

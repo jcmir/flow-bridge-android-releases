@@ -28,6 +28,8 @@ AAR `org.mozilla.geckoview:geckoview-arm64-v8a:157.0.20261005135250` совпа�
 
 ### LGPL в точном arm64 APK
 
+SoundTouch и Mozilla FFVPX распространяются с [текстом LGPL 2.1](third-party/LGPL-2.1.txt). Соответствующее дерево с изменениями Mozilla доступно в [официальном архиве Firefox 157.0.1](https://archive.mozilla.org/pub/firefox/releases/157.0.1/source/firefox-157.0.1.source.tar.xz). Сохранённые уведомления Mozilla входят в [license.html](third-party/gecko/chrome/toolkit/content/global/license.html).
+
 | Компонент | Доказательство и исходники |
 |---|---|
 | SoundTouch | libxul.so объявляет DT_NEEDED liblgpllibs.so и импортирует RLBoxSoundTouch. liblgpllibs.so экспортирует соответствующие символы. В Mozilla vendoring указан SoundTouch f738b1132ec1fd56efc90367898244cf52d9e6a5, LGPL-2.1. [Метаданные и исходный путь media/libsoundtouch](https://hg.mozilla.org/releases/mozilla-release/raw-file/737ec77d798755890b062aab541a90d6c75afd19/media/libsoundtouch/moz.yaml). |
@@ -38,11 +40,6 @@ AAR `org.mozilla.geckoview:geckoview-arm64-v8a:157.0.20261005135250` совпа�
 
 APK также содержит маркеры Google Play services base 18.7.2, basement 18.9.0, fido 21.3.1 и tasks 18.3.2. Из четырёх AAR соответствующих версий сохранены исходные third_party_licenses.txt и индекс third_party_licenses.json. [Notices Google Play services](third-party/google-play-services/). Индексы и тексты из upstream не означают, что каждая перечисленная библиотека присутствует в финальном DEX. Декларации POM не заменяют сверку с содержимым DEX.
 
-## Условия снятия HOLD
+## Оставшееся условие LGPL
 
-- Сопоставить runtime dependency graph и точные POM/AAR/JAR с финальным APK, включая транзитивные библиотеки и native-компоненты.
-- Сохранить все применимые copyright, LICENSE и NOTICE для точных версий; проверить, что уже извлечённые notices покрывают весь движок.
-- Сверить преобразованный Java-код и определить объём исходников и материалов для применимых условий LGPL, включая замену или перелинковку там, где это требуется.
-- Подтвердить разрешения на прочие включённые ресурсы и товарные обозначения.
-
-До выполнения этих проверок `THIRD_PARTY_NOTICES=HOLD`. Проприетарный статус приложения не отменяет обязательств по сторонним компонентам.
+Для принятого APK не подтверждён пользовательский способ запустить Gecko с совместимой изменённой библиотекой. Минимальная проверка — на отдельном arm64 Android установить тестовую копию с заменённой библиотекой из точного дерева, подписанную тестовым ключом, и подтвердить загрузку и вызов изменённой библиотеки. Если этот способ не подходит для выполнения §6, требуется пригодный комплект для перелинковки.

@@ -1,1 +1,1 @@
-de0129a85fd5a73e8c1ff7691bd9f583e7b7c507a0b08506a7402ad72fe1eb51  FlowBridge-Android-0.3.0.apk
+a213b43e19c9b60b8b69ee041cc8039066a1df6edd984178ced9ab0b270cfd8a  FlowBridge-Android-0.3.1.apk

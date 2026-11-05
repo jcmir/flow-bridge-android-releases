@@ -1,21 +1,21 @@
-# Установка и проверка 0.3.0 (build 9)
+# Установка и проверка 0.3.1 (build 10)
 
 1. Убедитесь, что устройство работает на Android 8.0+ и поддерживает arm64-v8a.
-2. После публикации скачайте APK и SHA256SUMS.txt из GitHub Release v0.3.0 нового distribution-репозитория. Проверенная публичная ссылка пока отсутствует.
+2. После публикации скачайте APK и SHA256SUMS.txt из GitHub Release v0.3.1 нового distribution-репозитория. Проверенная публичная ссылка пока отсутствует.
 3. В PowerShell выполните:
 
 ```powershell
-Get-FileHash .\FlowBridge-Android-0.3.0.apk -Algorithm SHA256
+Get-FileHash .\FlowBridge-Android-0.3.1.apk -Algorithm SHA256
 ```
 
-Ожидаемый SHA256: `de0129a85fd5a73e8c1ff7691bd9f583e7b7c507a0b08506a7402ad72fe1eb51`.
+Ожидаемый SHA256: `a213b43e19c9b60b8b69ee041cc8039066a1df6edd984178ced9ab0b270cfd8a`.
 
 На Linux: `sha256sum -c SHA256SUMS.txt`; на macOS: `shasum -a 256 -c SHA256SUMS.txt`.
 
 4. С помощью apksigner из Android SDK Build Tools выполните:
 
 ```text
-apksigner verify --verbose --print-certs FlowBridge-Android-0.3.0.apk
+apksigner verify --verbose --print-certs FlowBridge-Android-0.3.1.apk
 ```
 
 Проверка должна завершиться успешно. `Signer #1 certificate SHA-256 digest` должен быть `4fe387d417951041c26fe2d296d0e00548d9c38a4f09963c26f4241726e04c94`. Для эталонного APK подтверждены схемы v2 и v3, один подписант. Одного совпадения имени файла недостаточно.
@@ -26,4 +26,4 @@ apksigner verify --verbose --print-certs FlowBridge-Android-0.3.0.apk
 
 Обновляйте официальную сборку с тем же package и сертификатом поверх установленной, без удаления и очистки данных. Android может отклонить понижение versionCode, несовпадающую подпись или неподходящую архитектуру. Если установлена RC-сборка с другой подписью, остановитесь и обратитесь в поддержку. Не удаляйте данные ради обхода ошибки: это может привести к потере локальных профилей.
 
-Ожидаемые метаданные: package `local.flowbridge.android`, versionName `0.3.0`, versionCode `9`, minSdk `26`, targetSdk `35`, ABI `arm64-v8a`.
+Ожидаемые метаданные: package `local.flowbridge.android`, versionName `0.3.1`, versionCode `10`, minSdk `26`, targetSdk `35`, ABI `arm64-v8a`.
